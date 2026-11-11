@@ -13,6 +13,10 @@ jobs:
           java-version: 17
       - name: Unzip project
         run: unzip -q BrainBoostGame.zip
+      - name: Use my real AdMob IDs
+        run: |
+          sed -i 's#ca-app-pub-3940256099942544~3347511713#ca-app-pub-8610904151017465~5181735870#g; s#ca-app-pub-3940256099942544/5224354917#ca-app-pub-8610904151017465/2618830913#g' BrainBoost/app/build.gradle.kts
+          grep -n "ca-app-pub" BrainBoost/app/build.gradle.kts
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.9
